@@ -5,7 +5,32 @@
         <div class="col-md-12">
             <h1>Logistics</h1>
             <h2>Student Robotics Export Tool</h2>
-        </div>
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            <form role="form" action="/export" method="POST">
+                <div class="form-group">
+                    <label for="git_url">Git URL for project:</label>
+                    <input type="text" class="form-control" id="git_url" placeholder="e.g. git@github.com:studentrobotics/hello_robot.git" name="git_url">
+                </div>
+                <input type="submit" value="Export" class="btn btn-primary">
+            </div>
+        </form>
     </div>
 </div>
+{% if "zip_url" in session %}
+<script type="text/javascript">
+    (function() {
+        var downloadTimeoutInMiliSeconds = 1000;
+
+        function redirectToDownload() {
+            window.location.replace("{{ session["zip_url"]}}");
+        };
+
+        setTimeout(redirectToDownload, downloadTimeoutInMiliSeconds);
+    }());
+</script>
+{% endif %}
 {% endblock %}
