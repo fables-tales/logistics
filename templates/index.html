@@ -2,14 +2,19 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>Logistics</h1>
-            <h2>Student Robotics Export Tool</h2>
+        <div class="col-md-6 col-md-offset-3 flash">
             {% for category, message in get_flashed_messages(with_categories=True) %}
             <div class="alert alert-{{ "success" if category == "success" else "danger" }}" role="alert">
                 {{ message | safe }}
             </div>
             {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 login-form">
+            <h1>Logistics</h1>
+            <h2>Student Robotics Export Tool</h2>
             <form role="form" action="/export" method="POST">
                 <div class="form-group">
                     <label for="git_url">Git URL for project:</label>
@@ -23,14 +28,14 @@
 {% if "zip_url" in session %}
 <script type="text/javascript">
     (function() {
-        var downloadTimeoutInMiliSeconds = 1000;
+     var downloadTimeoutInMiliSeconds = 1000;
 
-        function redirectToDownload() {
-            window.location.replace("{{ session["zip_url"]}}");
-        };
+     function redirectToDownload() {
+     window.location.replace("{{ session["zip_url"]}}");
+     };
 
-        setTimeout(redirectToDownload, downloadTimeoutInMiliSeconds);
-    }());
-</script>
-{% endif %}
-{% endblock %}
+     setTimeout(redirectToDownload, downloadTimeoutInMiliSeconds);
+     }());
+ </script>
+ {% endif %}
+ {% endblock %}
