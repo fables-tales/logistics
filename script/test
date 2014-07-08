@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nosetests --cover-package=app --with-coverage --cover-html
