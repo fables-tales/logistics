@@ -56,17 +56,17 @@ def export_project():
 
     move(zip_path, static_zip_path)
 
-    wanted_return_type = request.accept_mimetypes.best_match(["application/json", "text/html", "text/plain"])
     if wanted_return_type == "text/html":
         flash(copy_for("EXPORT_SUCCESS"), "success")
         session["zip_url"] = "/%s" % (zip_url,)
         return redirect("/")
-    elif wanted_type == "text/json":
+    elif wanted_return_type == "text/json":
         return json.dumps({"zip_url": zip_url})
     else:
         return zip_url
 
+app.secret_key = 'qowiefjqwoeifjqeoirgjasodfjasidofpqjwefioqwjef'
+
 if __name__ == "__main__":
     app.debug = True
-    app.secret_key = 'qowiefjqwoeifjqeoirgjasodfjasidofpqjwefioqwjef'
     app.run()
