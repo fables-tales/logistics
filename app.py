@@ -38,7 +38,7 @@ def export_project():
         if wanted_return_type == "text/html":
             flash(copy_for("EXPORT_FAIL"), "failure")
             return redirect("/")
-        elif wanted_return_type == "text/json":
+        elif wanted_return_type == "application/json":
             return json.dumps({"errors": ["EXPORT_FAIL"]}), 400
         else:
             return "EXPORT_FAIL", 400
@@ -60,7 +60,7 @@ def export_project():
         flash(copy_for("EXPORT_SUCCESS"), "success")
         session["zip_url"] = "/%s" % (zip_url,)
         return redirect("/")
-    elif wanted_return_type == "text/json":
+    elif wanted_return_type == "application/json":
         return json.dumps({"zip_url": zip_url})
     else:
         return zip_url
