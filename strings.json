@@ -1,0 +1,4 @@
+{
+    "EXPORT_FAIL": "Failed to export repository. Please make sure the URL is correct. If your repo requires authentication please install our <a href='/public_key'>Public Key</a>",
+    "EXPORT_SUCCESS": "Repository exported successfully, downloading automatically."
+}

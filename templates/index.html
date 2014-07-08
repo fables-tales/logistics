@@ -5,9 +5,9 @@
         <div class="col-md-12">
             <h1>Logistics</h1>
             <h2>Student Robotics Export Tool</h2>
-            {% for message in get_flashed_messages() %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}
+            {% for category, message in get_flashed_messages(with_categories=True) %}
+            <div class="alert alert-{{ "success" if category == "success" else "danger" }}" role="alert">
+                {{ message | safe }}
             </div>
             {% endfor %}
             <form role="form" action="/export" method="POST">
