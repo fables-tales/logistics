@@ -64,10 +64,10 @@ class IntegrationTest(unittest.TestCase):
         return "window.location.replace.*robot.zip"
 
     def nonexistant_repository(self):
-        return "https://bees.com/"
+        return tempfile.mkdtemp()
 
     def publicly_clonable_repository(self):
-        return "https://github.com/samphippen/edi"
+        return "."
 
     def do_html_export(self, git_url):
         return self.do_export(git_url, "text/html")
