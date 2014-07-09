@@ -54,6 +54,12 @@ class IntegrationTest(unittest.TestCase):
         assert response.status_code == 400
         assert "EXPORT_FAIL" in response.data
 
+    def test_cross_origin(self):
+        response = self.do_json_export(self.publicly_clonable_repository())
+        print response.headers
+        assert response.headers["Access-Control-Allow-Origin"] == "*"
+
+
     def redirect_to_robot_zip_regex(self):
         return "window.location.replace.*robot.zip"
 

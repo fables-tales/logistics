@@ -7,6 +7,7 @@ import uuid
 from shutil import move
 
 from flask import Flask, render_template, request, session, flash, redirect
+from flask_cors import cross_origin
 
 app = Flask(__name__)
 def base_path():
@@ -25,6 +26,7 @@ def index():
 
 
 @app.route("/export", methods=["POST"])
+@cross_origin()
 def export_project():
     git_url = request.form["git_url"]
     dir_to_work_in = tempfile.mkdtemp()
