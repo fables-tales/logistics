@@ -6,6 +6,7 @@ import uuid
 
 from shutil import move
 
+
 from flask import Flask, render_template, request, session, flash, redirect
 from flask_cors import cross_origin
 
@@ -67,7 +68,7 @@ def export_project():
     else:
         return zip_url
 
-app.secret_key = 'qowiefjqwoeifjqeoirgjasodfjasidofpqjwefioqwjef'
+app.secret_key = "qowiefjqwoeifjqeoirgjasodfjasidofpqjwefioqwjef"
 
 if __name__ == "__main__":
     app.debug = True
